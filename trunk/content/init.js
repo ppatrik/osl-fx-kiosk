@@ -3,7 +3,7 @@ contentBrowser = document.getElementById("contentBrowser");
 
 function init(){
 	//will be true later
-	window.fullScreen = false;
+	window.fullScreen = true;
 }
 
 function backClicked(){

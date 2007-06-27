@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
+<window xmlns:html="http://www.w3.org/1999/xhtml"
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="mainWindow" hidechrome="false" onload="init();" title="test"
+	width="800" height="800" orient="horizontal">
+	<script src="init.js" />
+	<vbox flex="1" id="mainBox">
+		<hbox flex="2" id="buttonArea">
+			<button label="Back" tooltiptext="Go back"
+				oncommand="backClicked();">
+			</button>
+			<button label="Forward" tooltiptext="Go forward"
+				oncommand="forwardClicked();">
+			</button>
+			<button label="Home" tooltiptext="Go home"
+				oncommand="homeClicked();">
+			</button>
+		</hbox>
+		<splitter />
+		<browser id="contentBrowser" type="content-primary" flex="20"
+			src="http://www.osuosl.org" homepage="http://www.osuosl.org" />
+		<splitter />
+		<statusbar flex="1">
+			<statusbarpanel>
+				<label />
+			</statusbarpanel>
+		</statusbar>
+	</vbox>
+
+</window>
