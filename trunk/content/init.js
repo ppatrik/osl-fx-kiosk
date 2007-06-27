@@ -1,16 +1,12 @@
-var contentBrowser;
-contentBrowser = document.getElementById("contentBrowser");
+var contentBrowser = null;
 
 function init(){
-	//will be true later
-	window.fullScreen = true;
+	contentBrowser = document.getElementById("contentBrowser");
+	window.resizeTo(window.screen.availWidth, window.screen.availHeight);
 }
 
 function backClicked(){
 	try{
-	alert(contentBrowser);
-	alert(document.getElementById("contentBrowser").goBack);
-	alert(document.getElementById("contentBrowser").webNavigation);
 	if(contentBrowser.webNavigation.canGoBack == true)
 		contentBrowser.webNavigation.goBack();
 	}
@@ -21,8 +17,8 @@ function backClicked(){
 
 function forwardClicked(){
 	try{
-	if(document.getElementById("contentBrowser").canGoForward == true)
-		document.getElementById("contentBrowser").goForward();
+	if(contentBrowser.webNavigation.canGoForward == true)
+		contentBrowser.webNavigation.goForward();
 	}
 	catch(e){
 	alert("exception in backClicked: " + e);
@@ -31,7 +27,7 @@ function forwardClicked(){
 
 function homeClicked(){
 	try{
-	document.getElementById("contentBrowser").goHome();
+	contentBrowser.goHome();
 	}
 	catch(e){
 	alert("exception in homeClicked: " + e);

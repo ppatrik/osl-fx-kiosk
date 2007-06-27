@@ -2,9 +2,9 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <window xmlns:html="http://www.w3.org/1999/xhtml"
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	id="mainWindow" hidechrome="false" onload="init();" title="test"
-	width="800" height="800" orient="horizontal">
-	<script src="init.js" />
+	id="mainWindow" hidechrome="true" onload="init();" title="test"
+	orient="horizontal">
+	<script src="init.js" ></script>
 	<vbox flex="1" id="mainBox">
 		<hbox flex="2" id="buttonArea">
 			<button label="Back" tooltiptext="Go back"
