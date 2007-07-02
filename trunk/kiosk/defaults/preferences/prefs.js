@@ -1,1 +1,0 @@
-pref("toolkit.defaultChromeURI", "chrome://kiosk/content/kiosk.xul");
