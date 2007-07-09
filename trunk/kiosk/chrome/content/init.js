@@ -2,13 +2,14 @@ var contentBrowser = null;
 
 function init(){
 	contentBrowser = document.getElementById("contentBrowser");
-	window.resizeTo(window.screen.availWidth, window.screen.availHeight);
+	window.moveTo(-1,-1);
+	window.resizeTo(window.screen.width, window.screen.height);
 }
 
 function backClicked(){
 	try{
-	if(contentBrowser.webNavigation.canGoBack == true)
-		contentBrowser.webNavigation.goBack();
+	if(contentBrowser.canGoBack == true)
+		contentBrowser.goBack();
 	}
 	catch(e){
 	alert("exception in backClicked: " + e);
@@ -17,11 +18,11 @@ function backClicked(){
 
 function forwardClicked(){
 	try{
-	if(contentBrowser.webNavigation.canGoForward == true)
-		contentBrowser.webNavigation.goForward();
+	if(contentBrowser.canGoForward == true)
+		contentBrowser.goForward();
 	}
 	catch(e){
-	alert("exception in backClicked: " + e);
+	alert("exception in forwardClicked: " + e);
 	}
 }
 
@@ -31,5 +32,14 @@ function homeClicked(){
 	}
 	catch(e){
 	alert("exception in homeClicked: " + e);
+	}
+}
+
+function bookmarkClicked(loc){
+	try{
+	contentBrowser.loadURI(loc);
+	}
+	catch(e){
+	alert("exception in bookmarkClicked: " + e);
 	}
 }

@@ -6,18 +6,26 @@
 	orient="horizontal">
 	<script src="init.js" ></script>
 	<vbox flex="1" id="mainBox">
-		<hbox flex="2" id="buttonArea">
-			<button label="Back" tooltiptext="Go back"
-				oncommand="backClicked();">
-			</button>
-			<button label="Forward" tooltiptext="Go forward"
-				oncommand="forwardClicked();">
-			</button>
-			<button label="Home" tooltiptext="Go home"
-				oncommand="homeClicked();">
-			</button>
-		</hbox>
-		<splitter />
+		<vbox flex="2">
+			<hbox flex="2" id="buttonArea">
+				<button label="Back" tooltiptext="Go back"
+					oncommand="backClicked();">
+				</button>
+				<button label="Forward" tooltiptext="Go forward"
+					oncommand="forwardClicked();">
+				</button>
+				<button label="Home" tooltiptext="Go home"
+					oncommand="homeClicked();">
+				</button>
+			</hbox>
+			<splitter />
+			<hbox flex="1" id="bookmarkArea">
+				<button label="Google" tooltiptext="A search engine."
+					oncommand="bookmarkClicked('http://www.google.com');">
+				</button>
+			</hbox>
+			<splitter />
+		</vbox>
 		<browser id="contentBrowser" type="content-primary" flex="20"
 			src="http://www.osuosl.org" homepage="http://www.osuosl.org" />
 		<splitter />
