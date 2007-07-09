@@ -6,8 +6,8 @@
 	orient="horizontal">
 	<script src="init.js" ></script>
 	<vbox flex="1" id="mainBox">
-		<vbox flex="2">
-			<hbox flex="2" id="buttonArea">
+		<vbox flex="1">
+			<hbox flex="10" id="buttonArea">
 				<button label="Back" tooltiptext="Go back"
 					oncommand="backClicked();">
 				</button>
@@ -19,15 +19,21 @@
 				</button>
 			</hbox>
 			<splitter />
-			<hbox flex="1" id="bookmarkArea">
-				<button label="Google" tooltiptext="A search engine."
-					oncommand="bookmarkClicked('http://www.google.com');">
-				</button>
-			</hbox>
+			<toolbar flex="1" id="bookmarkBar"
+				datasources="settings.rdf" ref="urn:bookmarks">
+				<template>
+					<rule>
+						<toolbarbutton uri="rdf:*"
+							label="rdf:urn:root#name" tooltiptext="rdf:urn:root#desc"
+							location="rdf:urn:root#loc" oncommand="bookmarkClicked(event);"
+							class="small" />
+					</rule>
+				</template>
+			</toolbar>
 			<splitter />
 		</vbox>
 		<browser id="contentBrowser" type="content-primary" flex="20"
-			src="http://www.osuosl.org" homepage="http://www.osuosl.org" />
+			src="http://www.osuosl.org" homepage="http://www.osuosl.org" ></browser>
 		<splitter />
 		<statusbar flex="1">
 			<statusbarpanel>
