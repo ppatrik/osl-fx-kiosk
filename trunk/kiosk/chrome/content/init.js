@@ -35,9 +35,15 @@ function homeClicked(){
 	}
 }
 
-function bookmarkClicked(loc){
+function bookmarkClicked(event){
 	try{
-	contentBrowser.loadURI(loc);
+	var loc = event.target.getAttribute("location");
+	if(loc != ""){
+		contentBrowser.loadURI(loc);
+	}
+	else{
+		alert("Location field is empty!");
+	}
 	}
 	catch(e){
 	alert("exception in bookmarkClicked: " + e);
