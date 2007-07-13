@@ -1,9 +1,14 @@
 var contentBrowser = null;
+var Ci = Components.interfaces;
 
 function init(){
+	setTimeout(function(){
+		fullScreen = true;
+	}, 0);
 	contentBrowser = document.getElementById("contentBrowser");
-	window.moveTo(-1,-1);
-	window.resizeTo(window.screen.width, window.screen.height);
+	//these might be needed when using a tabbrowser
+	//contentBrowser.homePage = "http://www.osuosl.org";
+	//contentBrowser.goHome();
 }
 
 function backClicked(){

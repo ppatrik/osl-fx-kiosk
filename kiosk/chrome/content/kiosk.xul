@@ -1,10 +1,8 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<window xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	id="mainWindow" hidechrome="true" onload="init();" title="test"
-	orient="horizontal">
-	<script src="init.js" ></script>
+<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="mainWindow" onload="init();" title="test">
+	<script src="init.js"></script>
 	<vbox flex="1" id="mainBox">
 		<vbox flex="1">
 			<hbox flex="10" id="buttonArea">
@@ -18,7 +16,7 @@
 					oncommand="homeClicked();">
 				</button>
 			</hbox>
-			<splitter />
+			<splitter></splitter>
 			<toolbar flex="1" id="bookmarkBar"
 				datasources="settings.rdf" ref="urn:bookmarks">
 				<template>
@@ -33,7 +31,8 @@
 			<splitter />
 		</vbox>
 		<browser id="contentBrowser" type="content-primary" flex="20"
-			src="http://www.osuosl.org" homepage="http://www.osuosl.org" ></browser>
+			homepage="http://www.osuosl.org" src="http://www.osuosl.org">
+		</browser>
 		<splitter />
 		<statusbar flex="1">
 			<statusbarpanel>
