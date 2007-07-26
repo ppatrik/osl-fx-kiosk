@@ -2,6 +2,41 @@ var contentBrowser = null;
 var Ci = Components.interfaces;
 var width;
 var height;
+var allowURLs = new Array();
+allowURLs[0] = "about:blank";
+var currentURL;
+
+var httpRequestObserver =
+{
+	observe: function(subject, topic, data) 
+	{
+		if (topic == "http-on-modify-request"){
+			//these should provide a way to stop it before the request is sent,
+			//but the problem is if any content is brought in from elsewhere,
+			//it denies access to the whole page
+			//var httpChannel = subject.QueryInterface(Components.interfaces.nsIHttpChannel);
+			//requestURI = httpChannel.getRequestHeader("host");
+			//alert(httpChannel.getRequestHeader("host"));
+			onLoading();
+		}
+	},
+	
+	get observerService() {
+		return Components.classes["@mozilla.org/observer-service;1"]
+			.getService(Components.interfaces.nsIObserverService);
+	},
+	
+	register: function(){
+		this.observerService.addObserver(this, "http-on-modify-request", false);
+	},
+	
+	unregister: function(){
+	this.observerService.removeObserver(this, "http-on-modify-request");
+	}
+};
+
+//register our request listener
+httpRequestObserver.register();
 
 function init(){
 	setTimeout(function(){
@@ -13,11 +48,45 @@ function init(){
 	//these will be needed when using a tabbrowser
 	//contentBrowser.homePage = "http://www.osuosl.org";
 	//contentBrowser.goHome();
+	currentURL = contentBrowser.contentDocument.URL;
 	//cache window size
 	setTimeout(function(){
 		width = window.outerWidth;
 		height = window.outerHeight;
 	}, 0);
+	//load list of allowed URLs
+	loadAllowedURLs();
+}
+
+function loadAllowedURLs(){
+	allowURLs[1] = "osuosl.org";
+	allowURLs[2] = "www.google.com";
+	allowURLs[3] = "http://code.google.com/p/osl-fx-kiosk/";
+}
+
+function onLoading(){
+	loadingURL = contentBrowser.contentDocument.URL;
+	if(loadingURL != currentURL){
+		allowed = false;
+		for (i in allowURLs){
+			if(loadingURL.match(allowURLs[i]) != null){
+				allowed = true;
+				break;
+			}
+		}
+		if(allowURLs.length == 1){
+			allowed = true;
+		}
+		if(allowed == false){
+			alert(loadingURL + " is not in the allowed host list");
+			oldURL = currentURL;
+			currentURL = loadingURL;
+			contentBrowser.loadURI(oldURL);
+		}
+		else{
+			currentURL = loadingURL;
+		}
+	}
 }
 
 function onResize(){
