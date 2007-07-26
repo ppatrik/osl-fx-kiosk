@@ -25,6 +25,11 @@
 	<nssrch:desc>A blog.</nssrch:desc>
 	<nssrch:loc>http://soc.osuosl.org/blog/5/</nssrch:loc>
 </RDF:Description>
+<RDF:Description>
+	<nssrch:name>Project page</nssrch:name>
+	<nssrch:desc>This program.</nssrch:desc>
+	<nssrch:loc>http://code.google.com/p/osl-fx-kiosk/</nssrch:loc>
+</RDF:Description>
 </RDF:li>
 </RDF:Seq>
 </RDF:RDF>
