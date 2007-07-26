@@ -1,10 +1,11 @@
 <?xml version="1.0"?>
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
-<window xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	id="mainWindow" onload="init();" title="test">
+<window
+	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+	id="mainWindow" onload="init();" title="OSL testing kiosk">
 	<script src="init.js"></script>
 	<vbox flex="1" id="mainBox">
-		<vbox flex="1">
+		<vbox flex="7">
 			<hbox flex="10" id="buttonArea">
 				<button label="Back" tooltiptext="Go back"
 					oncommand="backClicked();">
@@ -16,7 +17,7 @@
 					oncommand="homeClicked();">
 				</button>
 			</hbox>
-			<splitter></splitter>
+
 			<toolbar flex="1" id="bookmarkBar"
 				datasources="settings.rdf" ref="urn:bookmarks">
 				<template>
@@ -25,20 +26,21 @@
 							label="rdf:urn:root#name" tooltiptext="rdf:urn:root#desc"
 							location="rdf:urn:root#loc" oncommand="bookmarkClicked(event);"
 							class="small" />
+						<spacer uri="rdf:*" width="10" />
 					</rule>
 				</template>
 			</toolbar>
-			<splitter />
+
 		</vbox>
-		<browser id="contentBrowser" type="content-primary" flex="20"
+		<browser id="contentBrowser" type="content-primary" flex="92"
 			homepage="http://www.osuosl.org" src="http://www.osuosl.org">
 		</browser>
-		<splitter />
 		<statusbar flex="1">
-			<statusbarpanel>
+			<statusbarpanel flex="1">
 				<label />
 			</statusbarpanel>
 		</statusbar>
+
 	</vbox>
 
 </window>
