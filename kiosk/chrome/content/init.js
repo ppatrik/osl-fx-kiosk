@@ -8,20 +8,16 @@ function init(){
 		fullScreen = true;
 	}, 0);
 	//set resize event
-	window.addEventListener("focus", onFocus, false);
 	window.addEventListener("resize", onResize, false);
 	contentBrowser = document.getElementById("contentBrowser");
-	//these might be needed when using a tabbrowser
+	//these will be needed when using a tabbrowser
 	//contentBrowser.homePage = "http://www.osuosl.org";
 	//contentBrowser.goHome();
-}
-
-function onFocus(){
-	//if width and height aren't cached, cache them
-	if(!(width > 1) || !(height > 1)){
+	//cache window size
+	setTimeout(function(){
 		width = window.outerWidth;
 		height = window.outerHeight;
-	}
+	}, 0);
 }
 
 function onResize(){
