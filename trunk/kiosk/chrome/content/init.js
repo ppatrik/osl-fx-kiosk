@@ -59,9 +59,30 @@ function init(){
 }
 
 function loadAllowedURLs(){
-	allowURLs[1] = "osuosl.org";
-	allowURLs[2] = "www.google.com";
-	allowURLs[3] = "http://code.google.com/p/osl-fx-kiosk/";
+	//allowURLs[1] = "osuosl.org";
+	//allowURLs[2] = "www.google.com";
+	//allowURLs[3] = "http://code.google.com/p/osl-fx-kiosk/";
+	var i = 0;
+	var file = Components.classes["@mozilla.org/file/directory_service;1"]
+                     .getService(Components.interfaces.nsIProperties)
+                     .get("resource:app", Components.interfaces.nsIFile);
+    file.append("chrome");
+    file.append("content");
+    file.append("URLs.txt");
+    
+	var istream = Components.classes["@mozilla.org/network/file-input-stream;1"]
+                        .createInstance(Components.interfaces.nsIFileInputStream);
+	istream.init(file, 0x01, 0444, 0);
+	istream.QueryInterface(Components.interfaces.nsILineInputStream);
+	
+	// read lines into allowURLs
+	var line = {}, hasmore;
+	do {
+	  hasmore = istream.readLine(line);
+	  allowURLs.push(line.value); 
+	} while(hasmore);
+	
+	istream.close();
 }
 
 function onLoading(){
