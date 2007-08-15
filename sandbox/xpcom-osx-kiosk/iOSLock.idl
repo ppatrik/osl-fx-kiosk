@@ -1,0 +1,16 @@
+/*
+ *  iOSLock.idl
+ *  xpcom-osx-kiosk
+ *
+ *  $Id: $
+ *
+ */
+
+#include "nsISupports.idl"
+
+[scriptable, uuid(343da8a5-581e-477e-8e70-3dddd8ae8010)]
+interface iOSLock : nsISupports
+{
+    void lock();
+    void hidedecor();
+};
