@@ -39,11 +39,16 @@ var httpRequestObserver =
 httpRequestObserver.register();
 
 function init(){
-	setTimeout(function(){
+	// test xpcom component
+	var cls = Components.classes["@osuosl.org/OSLock"];
+	var oslockapi = cls.createInstance().QueryInterface(Components.interfaces.iOSLock);
+	alert("oslockapi = " + oslockapi + "\n");
+	oslockapi.hidedecor();
+	/*setTimeout(function(){
 		fullScreen = true;
-	}, 0);
+	}, 0);*/
 	//set resize event
-	window.addEventListener("resize", onResize, false);
+	//window.addEventListener("resize", onResize, false);
 	contentBrowser = document.getElementById("contentBrowser");
 	//these will be needed when using a tabbrowser
 	//contentBrowser.homePage = "http://www.osuosl.org";
@@ -66,9 +71,9 @@ function loadAllowedURLs(){
 	var file = Components.classes["@mozilla.org/file/directory_service;1"]
                      .getService(Components.interfaces.nsIProperties)
                      .get("resource:app", Components.interfaces.nsIFile);
-    file.append("chrome");
-    file.append("content");
-    file.append("URLs.txt");
+	file.append("chrome");
+	file.append("content");
+	file.append("URLs.txt");
     
 	var istream = Components.classes["@mozilla.org/network/file-input-stream;1"]
                         .createInstance(Components.interfaces.nsIFileInputStream);
