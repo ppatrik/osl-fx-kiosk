@@ -30,9 +30,10 @@
 		AD3E362B0C73610E00770FEB /* libxpcomglue.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libxpcomglue.a; path = "../gecko-sdk/lib/libxpcomglue.a"; sourceTree = SOURCE_ROOT; };
 		AD3E36500C737BE900770FEB /* iOSLock.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSLock.idl; sourceTree = "<group>"; };
 		AD3E366D0C738B1600770FEB /* iOSLock.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = iOSLock.h; sourceTree = "<group>"; };
+		AD4035210C73F97000B2FF31 /* iOSLock.xpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = iOSLock.xpt; sourceTree = "<group>"; };
 		ADCF86220C72793000BBC0CC /* xpcom-osx-kiosk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xpcom-osx-kiosk.h"; sourceTree = "<group>"; };
 		ADCF86230C72793000BBC0CC /* xpcom-osx-kiosk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "xpcom-osx-kiosk.cpp"; sourceTree = "<group>"; };
-		D2AAC09D05546B4700DB518D /* xpcom-osx-kiosk.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = "xpcom-osx-kiosk.dylib"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D2AAC09D05546B4700DB518D /* iOSLock.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = iOSLock.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +57,7 @@
 		034768DDFF38A45A11DB9C8B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D2AAC09D05546B4700DB518D /* xpcom-osx-kiosk.dylib */,
+				D2AAC09D05546B4700DB518D /* iOSLock.dylib */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -99,6 +100,7 @@
 		AD3E365E0C73888500770FEB /* XPIDL */ = {
 			isa = PBXGroup;
 			children = (
+				AD4035210C73F97000B2FF31 /* iOSLock.xpt */,
 				AD3E366D0C738B1600770FEB /* iOSLock.h */,
 				AD3E36500C737BE900770FEB /* iOSLock.idl */,
 			);
@@ -120,9 +122,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		D2AAC09C05546B4700DB518D /* xpcom-osx-kiosk */ = {
+		D2AAC09C05546B4700DB518D /* iOSLock */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1DEB916008733D950010E9CD /* Build configuration list for PBXNativeTarget "xpcom-osx-kiosk" */;
+			buildConfigurationList = 1DEB916008733D950010E9CD /* Build configuration list for PBXNativeTarget "iOSLock" */;
 			buildPhases = (
 				D2AAC09905546B4700DB518D /* Headers */,
 				D2AAC09B05546B4700DB518D /* Frameworks */,
@@ -132,9 +134,9 @@
 			);
 			dependencies = (
 			);
-			name = "xpcom-osx-kiosk";
+			name = iOSLock;
 			productName = "xpcom-osx-kiosk";
-			productReference = D2AAC09D05546B4700DB518D /* xpcom-osx-kiosk.dylib */;
+			productReference = D2AAC09D05546B4700DB518D /* iOSLock.dylib */;
 			productType = "com.apple.product-type.library.dynamic";
 		};
 /* End PBXNativeTarget section */
@@ -148,7 +150,7 @@
 			productRefGroup = 034768DDFF38A45A11DB9C8B /* Products */;
 			projectDirPath = "";
 			targets = (
-				D2AAC09C05546B4700DB518D /* xpcom-osx-kiosk */,
+				D2AAC09C05546B4700DB518D /* iOSLock */,
 			);
 		};
 /* End PBXProject section */
@@ -183,7 +185,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../gecko-sdk/lib\"";
-				PRODUCT_NAME = "xpcom-osx-kiosk";
+				PRODUCT_NAME = iOSLock;
 				ZERO_LINK = YES;
 			};
 			name = Debug;
@@ -207,7 +209,7 @@
 					"$(LIBRARY_SEARCH_PATHS_QUOTED_1)",
 				);
 				LIBRARY_SEARCH_PATHS_QUOTED_1 = "\"$(SRCROOT)/../gecko-sdk/lib\"";
-				PRODUCT_NAME = "xpcom-osx-kiosk";
+				PRODUCT_NAME = iOSLock;
 			};
 			name = Release;
 		};
@@ -250,7 +252,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1DEB916008733D950010E9CD /* Build configuration list for PBXNativeTarget "xpcom-osx-kiosk" */ = {
+		1DEB916008733D950010E9CD /* Build configuration list for PBXNativeTarget "iOSLock" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1DEB916108733D950010E9CD /* Debug */,
