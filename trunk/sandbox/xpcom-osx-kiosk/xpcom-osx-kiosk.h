@@ -2,7 +2,7 @@
  *  xpcom-osx-kiosk.h
  *  xpcom-osx-kiosk
  *
- *  $Id: $
+ *  $Id$
  *
  */
 
