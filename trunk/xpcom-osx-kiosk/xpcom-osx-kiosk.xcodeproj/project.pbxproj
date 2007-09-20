@@ -14,6 +14,7 @@
 		AD3E36310C73610E00770FEB /* libxpcomglue_s.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3E362A0C73610E00770FEB /* libxpcomglue_s.a */; };
 		AD3E36320C73610E00770FEB /* libxpcomglue.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AD3E362B0C73610E00770FEB /* libxpcomglue.a */; };
 		AD3E366E0C738B1600770FEB /* iOSLock.h in Headers */ = {isa = PBXBuildFile; fileRef = AD3E366D0C738B1600770FEB /* iOSLock.h */; };
+		AD6EF71C0CA1E32600E88B7D /* ApplicationServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AD6EF71B0CA1E32600E88B7D /* ApplicationServices.framework */; };
 		ADCF86240C72793000BBC0CC /* xpcom-osx-kiosk.h in Headers */ = {isa = PBXBuildFile; fileRef = ADCF86220C72793000BBC0CC /* xpcom-osx-kiosk.h */; };
 		ADCF86250C72793000BBC0CC /* xpcom-osx-kiosk.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ADCF86230C72793000BBC0CC /* xpcom-osx-kiosk.cpp */; };
 		D2AAC0B105546B7500DB518D /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08FB77AAFE841565C02AAC07 /* Carbon.framework */; };
@@ -31,6 +32,7 @@
 		AD3E36500C737BE900770FEB /* iOSLock.idl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = iOSLock.idl; sourceTree = "<group>"; };
 		AD3E366D0C738B1600770FEB /* iOSLock.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = iOSLock.h; sourceTree = "<group>"; };
 		AD4035210C73F97000B2FF31 /* iOSLock.xpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = iOSLock.xpt; sourceTree = "<group>"; };
+		AD6EF71B0CA1E32600E88B7D /* ApplicationServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ApplicationServices.framework; path = /System/Library/Frameworks/ApplicationServices.framework; sourceTree = "<absolute>"; };
 		ADCF86220C72793000BBC0CC /* xpcom-osx-kiosk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "xpcom-osx-kiosk.h"; sourceTree = "<group>"; };
 		ADCF86230C72793000BBC0CC /* xpcom-osx-kiosk.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "xpcom-osx-kiosk.cpp"; sourceTree = "<group>"; };
 		D2AAC09D05546B4700DB518D /* iOSLock.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = iOSLock.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -48,6 +50,7 @@
 				AD3E362F0C73610E00770FEB /* libplds4.dylib in Frameworks */,
 				AD3E36310C73610E00770FEB /* libxpcomglue_s.a in Frameworks */,
 				AD3E36320C73610E00770FEB /* libxpcomglue.a in Frameworks */,
+				AD6EF71C0CA1E32600E88B7D /* ApplicationServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +79,7 @@
 		0867D69AFE84028FC02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				AD6EF71B0CA1E32600E88B7D /* ApplicationServices.framework */,
 				AD3E36250C73610E00770FEB /* libembed_base_s.a */,
 				AD3E36260C73610E00770FEB /* libnspr4.dylib */,
 				AD3E36270C73610E00770FEB /* libplc4.dylib */,

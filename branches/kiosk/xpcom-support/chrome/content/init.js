@@ -1,10 +1,7 @@
 var contentBrowser = null;
-var Ci = Components.interfaces;
-var width;
-var height;
 var allowURLs = new Array();
 allowURLs[0] = "about:blank";
-var currentURL;
+var currentURL = "about:blank";
 
 var httpRequestObserver =
 {
@@ -39,55 +36,59 @@ var httpRequestObserver =
 httpRequestObserver.register();
 
 function init(){
-	// test xpcom component
-	var cls = Components.classes["@osuosl.org/OSLock"];
-	var oslockapi = cls.createInstance().QueryInterface(Components.interfaces.iOSLock);
-	alert("oslockapi = " + oslockapi + "\n");
-	oslockapi.hidedecor();
-	/*setTimeout(function(){
-		fullScreen = true;
-	}, 0);*/
-	//set resize event
-	//window.addEventListener("resize", onResize, false);
 	contentBrowser = document.getElementById("contentBrowser");
-	//these will be needed when using a tabbrowser
-	//contentBrowser.homePage = "http://www.osuosl.org";
-	//contentBrowser.goHome();
-	currentURL = contentBrowser.contentDocument.URL;
-	//cache window size
-	setTimeout(function(){
-		width = window.outerWidth;
-		height = window.outerHeight;
-	}, 0);
+	setTimeout(init2, 0);
+
 	//load list of allowed URLs
 	loadAllowedURLs();
+
+	// save URL for onLoading
+	currentURL = contentBrowser.contentDocument.URL;
+}
+
+function init2(){
+	fullScreen = true;
+	//init locking component
+	var cls = Components.classes["@osuosl.org/OSLock"];
+	var oslockapi = cls.createInstance().QueryInterface(Components.interfaces.iOSLock);
+	oslockapi.lock();
+}
+
+
+function destroy(){
+	//remove locking
+	var cls = Components.classes["@osuosl.org/OSLock"];
+	var oslockapi = cls.createInstance().QueryInterface(Components.interfaces.iOSLock);
+	oslockapi.unlock();
 }
 
 function loadAllowedURLs(){
-	//allowURLs[1] = "osuosl.org";
-	//allowURLs[2] = "www.google.com";
-	//allowURLs[3] = "http://code.google.com/p/osl-fx-kiosk/";
+	try{
 	var i = 0;
 	var file = Components.classes["@mozilla.org/file/directory_service;1"]
-                     .getService(Components.interfaces.nsIProperties)
-                     .get("resource:app", Components.interfaces.nsIFile);
+		.getService(Components.interfaces.nsIProperties)
+		.get("resource:app", Components.interfaces.nsIFile);
 	file.append("chrome");
 	file.append("content");
-	file.append("URLs.txt");
-    
+	file.append("urlmatch.txt");
+
 	var istream = Components.classes["@mozilla.org/network/file-input-stream;1"]
-                        .createInstance(Components.interfaces.nsIFileInputStream);
+		.createInstance(Components.interfaces.nsIFileInputStream);
 	istream.init(file, 0x01, 0444, 0);
 	istream.QueryInterface(Components.interfaces.nsILineInputStream);
 	
 	// read lines into allowURLs
 	var line = {}, hasmore;
 	do {
-	  hasmore = istream.readLine(line);
-	  allowURLs.push(line.value); 
+		hasmore = istream.readLine(line);
+		allowURLs.push(line.value); 
 	} while(hasmore);
 	
 	istream.close();
+	}
+	catch(e){
+	alert("exception in loadAllowedURLs: " + e);
+	}
 }
 
 function onLoading(){
@@ -115,10 +116,13 @@ function onLoading(){
 	}
 }
 
-function onResize(){
+/*function onResize(){
+	alert('resized');
 	//put it back to normal size
-	window.resizeTo(width, height);
-}
+	if (width != 0 && height !=0) {
+		window.resizeTo(width, height);
+	}
+}*/
 
 function backClicked(){
 	try{
@@ -146,6 +150,18 @@ function homeClicked(){
 	}
 	catch(e){
 	alert("exception in homeClicked: " + e);
+	}
+}
+
+function exitClicked(){
+	try{
+	var appStartup = Components.classes['@mozilla.org/toolkit/app-startup;1'].
+	getService(Components.interfaces.nsIAppStartup);
+	appStartup.quit(Components.interfaces.nsIAppStartup.eAttemptQuit);
+	window.close();
+	}
+	catch(e){
+	alert("exception in exitClicked: " + e);
 	}
 }
 

@@ -12,5 +12,5 @@
 interface iOSLock : nsISupports
 {
     void lock();
-    void hidedecor();
+    void unlock();
 };

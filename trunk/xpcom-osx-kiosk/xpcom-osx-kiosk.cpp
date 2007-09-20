@@ -24,15 +24,30 @@ OSLock::~OSLock()
 /* void lock (); */
 NS_IMETHODIMP OSLock::Lock()
 {
-    return NS_ERROR_NOT_IMPLEMENTED;
+    //struct Point foo;
+    //foo.v = 100;
+    //foo.h = 100;
+    WindowRef currentWin = FrontWindow();
+    //WindowRef currentWin;
+    //FindWindow(foo, &currentWin);
+    //SetWindowGroupLevel(GetWindowGroup(currentWin), 62);
+    //SetWindowGroupLevel(GetWindowGroupOfClass(kDocumentWindowClass), 62);
+    //ChangeWindowAttributes(currentWin, kWindowNoTitleBarAttribute,
+    //    kWindowResizableAttribute);
+    HideWindow(currentWin);    
+    SetSystemUIMode(kUIModeAllHidden, kUIOptionDisableAppleMenu |
+        kUIOptionDisableProcessSwitch //|
+        //kUIOptionDisableForceQuit);
+        );
+    //CGCaptureAllDisplays();
+    return NS_OK;
 }
 
-/* void hidedecor (); */
-NS_IMETHODIMP OSLock::Hidedecor()
+/* void unlock (); */
+NS_IMETHODIMP OSLock::Unlock()
 {
-    SetSystemUIMode(kUIModeAllHidden, kUIOptionDisableAppleMenu |
-        kUIOptionDisableProcessSwitch |
-        kUIOptionDisableForceQuit);
+    SetSystemUIMode(kUIModeNormal, NULL);
+    //CGReleaseAllDisplays();
     return NS_OK;
 }
 
