@@ -36,6 +36,7 @@ var httpRequestObserver =
 httpRequestObserver.register();
 
 function init(){
+	try{
 	contentBrowser = document.getElementById("contentBrowser");
 	setTimeout(init2, 0);
 
@@ -44,14 +45,28 @@ function init(){
 
 	// save URL for onLoading
 	currentURL = contentBrowser.contentDocument.URL;
+	}
+	catch(e){
+	alert("exception in init: " + e);
+	}
 }
 
 function init2(){
-	fullScreen = true;
+	try{
 	//init locking component
 	var cls = Components.classes["@osuosl.org/OSLock"];
 	var oslockapi = cls.createInstance().QueryInterface(Components.interfaces.iOSLock);
 	oslockapi.lock();
+
+	fullScreen = true;
+
+	//set resize event
+	window.addEventListener("resize", onResize, false);
+
+	}
+	catch(e){
+	alert("exception in init2: " + e);
+	}
 }
 
 
@@ -116,13 +131,16 @@ function onLoading(){
 	}
 }
 
-/*function onResize(){
-	alert('resized');
+function onResize(){
+	try{
 	//put it back to normal size
-	if (width != 0 && height !=0) {
-		window.resizeTo(width, height);
+        moveTo(0, 0);
+        resizeTo(window.screen.width, window.screen.height);
 	}
-}*/
+	catch(e){
+	alert("exception in onResize: " + e);
+	}
+}
 
 function backClicked(){
 	try{
