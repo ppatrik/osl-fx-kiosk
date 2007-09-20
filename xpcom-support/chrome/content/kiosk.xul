@@ -2,12 +2,15 @@
 <?xml-stylesheet href="chrome://global/skin/" type="text/css"?>
 <window
 	xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
-	id="mainWindow" onload="init();" title="OSL testing kiosk" datasources="settings.rdf"
+	id="mainWindow" onload="init();" onclose="destroy();" title="OSL testing kiosk" datasources="settings.rdf"
 	ref="urn:allowedURLs">
 	<script src="init.js"></script>
 	<vbox flex="1" id="mainBox">
 		<vbox flex="7">
-			<hbox flex="10" id="buttonArea">
+			<hbox flex="5" id="buttonArea">
+				<button label="Exit" tooltiptext="Exit browser"
+					oncommand="exitClicked();">
+				</button>
 				<button label="Back" tooltiptext="Go back"
 					oncommand="backClicked();">
 				</button>
@@ -19,7 +22,7 @@
 				</button>
 			</hbox>
 
-			<toolbar flex="1" id="bookmarkBar"
+			<toolbar flex="1" id="bookmarkBar" hidden="true"
 				datasources="settings.rdf" ref="urn:bookmarks">
 				<template>
 					<rule>
@@ -33,7 +36,7 @@
 			</toolbar>
 
 		</vbox>
-		<browser id="contentBrowser" type="content-primary" flex="92"
+		<browser id="contentBrowser" type="content-primary" flex="95"
 			homepage="http://www.osuosl.org" src="http://www.osuosl.org">
 		</browser>
 		<statusbar flex="1">
