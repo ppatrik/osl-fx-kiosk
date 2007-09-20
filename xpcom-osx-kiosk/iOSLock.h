@@ -30,25 +30,25 @@ class NS_NO_VTABLE iOSLock : public nsISupports {
   /* void lock (); */
   NS_IMETHOD Lock(void) = 0;
 
-  /* void hidedecor (); */
-  NS_IMETHOD Hidedecor(void) = 0;
+  /* void unlock (); */
+  NS_IMETHOD Unlock(void) = 0;
 
 };
 
 /* Use this macro when declaring classes that implement this interface. */
 #define NS_DECL_IOSLOCK \
   NS_IMETHOD Lock(void); \
-  NS_IMETHOD Hidedecor(void); 
+  NS_IMETHOD Unlock(void); 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object. */
 #define NS_FORWARD_IOSLOCK(_to) \
   NS_IMETHOD Lock(void) { return _to Lock(); } \
-  NS_IMETHOD Hidedecor(void) { return _to Hidedecor(); } 
+  NS_IMETHOD Unlock(void) { return _to Unlock(); } 
 
 /* Use this macro to declare functions that forward the behavior of this interface to another object in a safe way. */
 #define NS_FORWARD_SAFE_IOSLOCK(_to) \
   NS_IMETHOD Lock(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Lock(); } \
-  NS_IMETHOD Hidedecor(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Hidedecor(); } 
+  NS_IMETHOD Unlock(void) { return !_to ? NS_ERROR_NULL_POINTER : _to->Unlock(); } 
 
 #if 0
 /* Use the code below as a template for the implementation class for this interface. */
@@ -88,8 +88,8 @@ NS_IMETHODIMP _MYCLASS_::Lock()
     return NS_ERROR_NOT_IMPLEMENTED;
 }
 
-/* void hidedecor (); */
-NS_IMETHODIMP _MYCLASS_::Hidedecor()
+/* void unlock (); */
+NS_IMETHODIMP _MYCLASS_::Unlock()
 {
     return NS_ERROR_NOT_IMPLEMENTED;
 }

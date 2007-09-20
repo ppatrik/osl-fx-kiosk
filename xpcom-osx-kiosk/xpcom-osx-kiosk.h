@@ -9,7 +9,6 @@
 #ifndef _XPCOM_OSX_KIOSK_H
 #define _XPCOM_OSX_KIOSK_H
 
-//#include <Carbon/Carbon.h>
 #include "iOSLock.h"
 
 #define OSLOCK_CID \
