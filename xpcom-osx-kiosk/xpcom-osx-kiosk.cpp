@@ -6,6 +6,7 @@
  *
  */
 
+#include <stdio.h>
 #include "nsIGenericFactory.h"
 #include "xpcom-osx-kiosk.h"
 
@@ -24,21 +25,28 @@ OSLock::~OSLock()
 /* void lock (); */
 NS_IMETHODIMP OSLock::Lock()
 {
-    //struct Point foo;
-    //foo.v = 100;
-    //foo.h = 100;
-    WindowRef currentWin = FrontWindow();
-    //WindowRef currentWin;
-    //FindWindow(foo, &currentWin);
-    //SetWindowGroupLevel(GetWindowGroup(currentWin), 62);
-    //SetWindowGroupLevel(GetWindowGroupOfClass(kDocumentWindowClass), 62);
-    //ChangeWindowAttributes(currentWin, kWindowNoTitleBarAttribute,
-    //    kWindowResizableAttribute);
-    HideWindow(currentWin);    
+    WindowRef maskWindow = NULL;
+    Rect winRect;
+    winRect.top = 0;
+    winRect.left = 0;
+    winRect.bottom = GetMBarHeight();
+    winRect.right = CGDisplayPixelsWide(CGMainDisplayID());
+    CreateNewWindow(kOverlayWindowClass, kWindowOpaqueForEventsAttribute |
+                    kWindowDoesNotCycleAttribute,
+                    &winRect, &maskWindow);
+    if (maskWindow == NULL) {
+        printf("maskWindow is NULL\n");
+    } else {
+        if (ChangeWindowAttributes(maskWindow, kWindowNoAttributes,
+                                   kWindowHideOnFullScreenAttribute) != 0) {
+            printf("Unable to remove kWindowHideOnFullScreenAttribute!\n");
+        }
+        ShowWindow(maskWindow);
+    }
+    
     SetSystemUIMode(kUIModeAllHidden, kUIOptionDisableAppleMenu |
-        kUIOptionDisableProcessSwitch //|
-        //kUIOptionDisableForceQuit);
-        );
+                    kUIOptionDisableProcessSwitch); // | kUIOptionDisableForceQuit);
+
     //CGCaptureAllDisplays();
     return NS_OK;
 }
