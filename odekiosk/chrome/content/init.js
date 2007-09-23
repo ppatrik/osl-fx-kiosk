@@ -42,6 +42,11 @@ function init(){
 
 	//load list of allowed URLs
 	loadAllowedURLs();
+	
+	//hide or show tools
+	var prefs = Components.classes["@mozilla.org/preferences-service;1"].
+                    getService(Components.interfaces.nsIPrefService);
+	document.getElementById("toolArea").hidden = prefs.getBranch("kiosk.").getBoolPref("hideTools");
 
 	// save URL for onLoading
 	currentURL = contentBrowser.contentDocument.URL;
@@ -85,7 +90,7 @@ function loadAllowedURLs(){
 		.get("resource:app", Components.interfaces.nsIFile);
 	file.append("chrome");
 	file.append("content");
-	file.append("urlmatch.txt");
+	file.append("URLs.txt");
 
 	var istream = Components.classes["@mozilla.org/network/file-input-stream;1"]
 		.createInstance(Components.interfaces.nsIFileInputStream);
