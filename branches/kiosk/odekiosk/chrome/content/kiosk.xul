@@ -8,7 +8,7 @@
 	ref="urn:allowedURLs">
 	<script src="init.js"></script>
 	<vbox flex="1" id="mainBox">
-		<vbox flex="3">
+		<vbox flex="3" id="toolArea">
 			<hbox flex="3" id="buttonArea">
 				<button label="Exit" tooltiptext="Exit browser"
 					oncommand="exitClicked();">
@@ -39,7 +39,7 @@
 
 		</vbox>
 		<browser id="contentBrowser" type="content-primary" flex="97"
-			homepage="http://www.osuosl.org" src="http://www.osuosl.org">
+			homepage="http://oakssecure.starttest.com/" src="http://oakssecure.starttest.com/">
 		</browser>
 	</vbox>
 
