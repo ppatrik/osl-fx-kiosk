@@ -1,6 +1,0 @@
-//
-// Prefix header for all source files of the 'xpcom-osx-kiosk' target in the 'xpcom-osx-kiosk' project.
-//
-
-#include <Carbon/Carbon.h>
-#include <ApplicationServices/ApplicationServices.h>
