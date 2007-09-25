@@ -1,0 +1,5 @@
+content kiosk file:content/
+locale   kiosk  en-US         locale/en-US/
+skin     kiosk  standard/1.0  skin/standard/
+
+locale   branding   en-US         locale/en-US/brand/
